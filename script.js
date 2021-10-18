@@ -55,7 +55,7 @@ function generateObsticles(){
     let randomTime = Math.random() * 4000
     let obsticlePosition = 1000
     const obsticle = document.createElement('div')
-    obsticle.classList.add('obsticle')
+    if(!isGameOver)obsticle.classList.add('obsticle')
     grid.appendChild(obsticle)
     obsticle.style.left = obsticlePosition + 'px'
 
@@ -66,6 +66,12 @@ function generateObsticles(){
             clearInterval(timerId)
             alert.innerHTML='GAME OVER!'
             isGameOver = true
+
+
+            //remove child div
+            while (grid.firstChild){
+                grid.removeChild(grid.lastChild)
+            }
         }
 
         obsticlePosition -=10
