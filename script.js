@@ -5,12 +5,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid')
     let isGameOver = False
     const alert = document.getElementById('alert')
+   
+    const scoreDisplay = document.querySelector('span') // get our span element where we will put the score
+    let score = 0;
 
 
 
-function control(e){
+function control(event){
     //control the dino
-    if(e.keycode === 32) {
+    if(event.code === "Space") {
         if(!isJumping){
             isJumping = True
             jump()
@@ -20,6 +23,7 @@ function control(e){
 }
 
 document.addEventListener('keyup', control)
+document.addEventListener('keydown', control) // when the key is down
 let position = 0
 
 function jump(){
@@ -47,6 +51,9 @@ function jump(){
         count ++
         position = position * gravity
         dino.getElementsByClassName.bottom = position + 'px'
+
+        score++
+            scoreDisplay.textContent = score //display the new score
     },20)
 }
 
