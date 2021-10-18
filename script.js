@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function control(event){
     //control the dino
-    if(event.code === "Space") {
+    if(event.key ==="ArrowUp" ||event.code === "Space" || event.key==='w') {
         if(!isJumping){
             isJumping = True
             jump()
