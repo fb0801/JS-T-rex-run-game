@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let isJumping = False
     let gravity = 0.9
     const grid = document.querySelector('.grid')
+    let isGameOver = False
+    const alert = document.getElementById('alert')
 
 
 
@@ -60,15 +62,16 @@ function generateObsticles(){
 
 
     let timerId = setInterval(function(){
-        if(obsticlePosition ===0){
+        if(obsticlePosition > 0 && obsticlePosition <60 && position < 60){
             clearInterval(timerId)
-            alert('Game Over')
+            alert.innerHTML='GAME OVER!'
+            isGameOver = true
         }
 
         obsticlePosition -=10
         obsticle.style.left = obsticlePosition + 'px'
-        setTimeout(generateObsticles,randomTime)
     },20)
+   if(!isGameOver) setTimeout(generateObsticles,randomTime)
 
 }
 generateObsticles()
